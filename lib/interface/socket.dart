@@ -1,3 +1,4 @@
+import 'package:arquella_hub/view/add_call.dart';
 import 'package:flutter/material.dart';
 import 'package:arquella_hub/server/websocket_server.dart';
 import 'package:arquella_hub/data/database/database_screen.dart';
@@ -12,6 +13,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'WebSocket Server',
       theme: ThemeData(
         primarySwatch: Colors.blue,
@@ -81,7 +83,12 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
         floatingActionButton: FloatingActionButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const AddCallPage()),
+            );
+          },
           tooltip: 'Add Call',
           child: const Icon(Icons.add),
         ));
