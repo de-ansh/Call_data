@@ -1,3 +1,4 @@
+import 'package:arquella_hub/data/database/call_database.dart';
 import 'package:arquella_hub/view/add_call.dart';
 import 'package:flutter/material.dart';
 import 'package:arquella_hub/server/websocket_server.dart';
@@ -78,6 +79,18 @@ class _HomePageState extends State<HomePage> {
                   Navigator.pushNamed(context, '/database');
                 },
                 child: Text('View Database'),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const CallDataBase()));
+                },
+                child: Text('View Call Database'),
               ),
             ],
           ),

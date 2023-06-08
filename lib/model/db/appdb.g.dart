@@ -21,9 +21,9 @@ class $CallTableTable extends CallTable
   static const VerificationMeta _site_IdMeta =
       const VerificationMeta('site_Id');
   @override
-  late final GeneratedColumn<int> site_Id = GeneratedColumn<int>(
+  late final GeneratedColumn<String> site_Id = GeneratedColumn<String>(
       'site_id', aliasedName, false,
-      type: DriftSqlType.int, requiredDuringInsert: true);
+      type: DriftSqlType.string, requiredDuringInsert: true);
   static const VerificationMeta _cll_start_dateMeta =
       const VerificationMeta('cll_start_date');
   @override
@@ -39,9 +39,9 @@ class $CallTableTable extends CallTable
   static const VerificationMeta _cll_durationMeta =
       const VerificationMeta('cll_duration');
   @override
-  late final GeneratedColumn<int> cll_duration = GeneratedColumn<int>(
+  late final GeneratedColumn<String> cll_duration = GeneratedColumn<String>(
       'call_duration', aliasedName, false,
-      type: DriftSqlType.int, requiredDuringInsert: true);
+      type: DriftSqlType.string, requiredDuringInsert: true);
   static const VerificationMeta _cll_roomMeta =
       const VerificationMeta('cll_room');
   @override
@@ -63,9 +63,9 @@ class $CallTableTable extends CallTable
   static const VerificationMeta _cll_unit_IDMeta =
       const VerificationMeta('cll_unit_ID');
   @override
-  late final GeneratedColumn<int> cll_unit_ID = GeneratedColumn<int>(
+  late final GeneratedColumn<String> cll_unit_ID = GeneratedColumn<String>(
       'cll_unit_ID', aliasedName, false,
-      type: DriftSqlType.int, requiredDuringInsert: true);
+      type: DriftSqlType.string, requiredDuringInsert: true);
   static const VerificationMeta _cll_db_ref_idMeta =
       const VerificationMeta('cll_db_ref_id');
   @override
@@ -87,15 +87,15 @@ class $CallTableTable extends CallTable
   static const VerificationMeta _cll_call_group_IDMeta =
       const VerificationMeta('cll_call_group_ID');
   @override
-  late final GeneratedColumn<int> cll_call_group_ID = GeneratedColumn<int>(
-      'cll_call_group_ID', aliasedName, false,
-      type: DriftSqlType.int, requiredDuringInsert: true);
+  late final GeneratedColumn<String> cll_call_group_ID =
+      GeneratedColumn<String>('cll_call_group_ID', aliasedName, false,
+          type: DriftSqlType.string, requiredDuringInsert: true);
   static const VerificationMeta _cll_worked_throughMeta =
       const VerificationMeta('cll_worked_through');
   @override
-  late final GeneratedColumn<int> cll_worked_through = GeneratedColumn<int>(
-      'cll_worked_through ', aliasedName, false,
-      type: DriftSqlType.int, requiredDuringInsert: true);
+  late final GeneratedColumn<String> cll_worked_through =
+      GeneratedColumn<String>('cll_worked_through ', aliasedName, false,
+          type: DriftSqlType.string, requiredDuringInsert: true);
   static const VerificationMeta _cll_carerMeta =
       const VerificationMeta('cll_carer');
   @override
@@ -144,24 +144,12 @@ class $CallTableTable extends CallTable
   late final GeneratedColumn<String> cll_carehome = GeneratedColumn<String>(
       'cll_carehome', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  static const VerificationMeta _created_atMeta =
-      const VerificationMeta('created_at');
-  @override
-  late final GeneratedColumn<DateTime> created_at = GeneratedColumn<DateTime>(
-      'created_at', aliasedName, false,
-      type: DriftSqlType.dateTime, requiredDuringInsert: true);
-  static const VerificationMeta _updated_atMeta =
-      const VerificationMeta('updated_at');
-  @override
-  late final GeneratedColumn<DateTime> updated_at = GeneratedColumn<DateTime>(
-      'updated_at', aliasedName, false,
-      type: DriftSqlType.dateTime, requiredDuringInsert: true);
   static const VerificationMeta _careHome_idMeta =
       const VerificationMeta('careHome_id');
   @override
-  late final GeneratedColumn<int> careHome_id = GeneratedColumn<int>(
+  late final GeneratedColumn<String> careHome_id = GeneratedColumn<String>(
       'careHome_id ', aliasedName, false,
-      type: DriftSqlType.int, requiredDuringInsert: true);
+      type: DriftSqlType.string, requiredDuringInsert: true);
   @override
   List<GeneratedColumn> get $columns => [
         callId,
@@ -186,8 +174,6 @@ class $CallTableTable extends CallTable
         cll_journey_ref,
         cll_caregroup,
         cll_carehome,
-        created_at,
-        updated_at,
         careHome_id
       ];
   @override
@@ -359,22 +345,6 @@ class $CallTableTable extends CallTable
     } else if (isInserting) {
       context.missing(_cll_carehomeMeta);
     }
-    if (data.containsKey('created_at')) {
-      context.handle(
-          _created_atMeta,
-          created_at.isAcceptableOrUnknown(
-              data['created_at']!, _created_atMeta));
-    } else if (isInserting) {
-      context.missing(_created_atMeta);
-    }
-    if (data.containsKey('updated_at')) {
-      context.handle(
-          _updated_atMeta,
-          updated_at.isAcceptableOrUnknown(
-              data['updated_at']!, _updated_atMeta));
-    } else if (isInserting) {
-      context.missing(_updated_atMeta);
-    }
     if (data.containsKey('careHome_id ')) {
       context.handle(
           _careHome_idMeta,
@@ -395,13 +365,13 @@ class $CallTableTable extends CallTable
       callId: attachedDatabase.typeMapping
           .read(DriftSqlType.int, data['${effectivePrefix}call_id'])!,
       site_Id: attachedDatabase.typeMapping
-          .read(DriftSqlType.int, data['${effectivePrefix}site_id'])!,
+          .read(DriftSqlType.string, data['${effectivePrefix}site_id'])!,
       cll_start_date: attachedDatabase.typeMapping.read(
           DriftSqlType.dateTime, data['${effectivePrefix}cll_Start_dat'])!,
       cll_end_date: attachedDatabase.typeMapping
           .read(DriftSqlType.dateTime, data['${effectivePrefix}cll_end_dat'])!,
       cll_duration: attachedDatabase.typeMapping
-          .read(DriftSqlType.int, data['${effectivePrefix}call_duration'])!,
+          .read(DriftSqlType.string, data['${effectivePrefix}call_duration'])!,
       cll_room: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}cll_room'])!,
       cll_type: attachedDatabase.typeMapping
@@ -409,17 +379,17 @@ class $CallTableTable extends CallTable
       cll_zone: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}cll_zone'])!,
       cll_unit_ID: attachedDatabase.typeMapping
-          .read(DriftSqlType.int, data['${effectivePrefix}cll_unit_ID'])!,
+          .read(DriftSqlType.string, data['${effectivePrefix}cll_unit_ID'])!,
       cll_db_ref_id: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}cll_db_ref_id '])!,
       cll_db_date_id: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}cll_db_date_id'])!,
       cll_db_time_id: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}cll_db_time_id'])!,
-      cll_call_group_ID: attachedDatabase.typeMapping
-          .read(DriftSqlType.int, data['${effectivePrefix}cll_call_group_ID'])!,
+      cll_call_group_ID: attachedDatabase.typeMapping.read(
+          DriftSqlType.string, data['${effectivePrefix}cll_call_group_ID'])!,
       cll_worked_through: attachedDatabase.typeMapping.read(
-          DriftSqlType.int, data['${effectivePrefix}cll_worked_through '])!,
+          DriftSqlType.string, data['${effectivePrefix}cll_worked_through '])!,
       cll_carer: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}cll_carer'])!,
       cll_call_tracking_ref: attachedDatabase.typeMapping.read(
@@ -437,12 +407,8 @@ class $CallTableTable extends CallTable
           .read(DriftSqlType.string, data['${effectivePrefix}cll_caregroup '])!,
       cll_carehome: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}cll_carehome'])!,
-      created_at: attachedDatabase.typeMapping
-          .read(DriftSqlType.dateTime, data['${effectivePrefix}created_at'])!,
-      updated_at: attachedDatabase.typeMapping
-          .read(DriftSqlType.dateTime, data['${effectivePrefix}updated_at'])!,
       careHome_id: attachedDatabase.typeMapping
-          .read(DriftSqlType.int, data['${effectivePrefix}careHome_id '])!,
+          .read(DriftSqlType.string, data['${effectivePrefix}careHome_id '])!,
     );
   }
 
@@ -454,19 +420,19 @@ class $CallTableTable extends CallTable
 
 class CallTableData extends DataClass implements Insertable<CallTableData> {
   final int callId;
-  final int site_Id;
+  final String site_Id;
   final DateTime cll_start_date;
   final DateTime cll_end_date;
-  final int cll_duration;
+  final String cll_duration;
   final String cll_room;
   final String cll_type;
   final String cll_zone;
-  final int cll_unit_ID;
+  final String cll_unit_ID;
   final String cll_db_ref_id;
   final String cll_db_date_id;
   final String cll_db_time_id;
-  final int cll_call_group_ID;
-  final int cll_worked_through;
+  final String cll_call_group_ID;
+  final String cll_worked_through;
   final String cll_carer;
   final String cll_call_tracking_ref;
   final String cll_clear;
@@ -475,9 +441,7 @@ class CallTableData extends DataClass implements Insertable<CallTableData> {
   final String cll_journey_ref;
   final String cll_caregroup;
   final String cll_carehome;
-  final DateTime created_at;
-  final DateTime updated_at;
-  final int careHome_id;
+  final String careHome_id;
   const CallTableData(
       {required this.callId,
       required this.site_Id,
@@ -501,26 +465,24 @@ class CallTableData extends DataClass implements Insertable<CallTableData> {
       required this.cll_journey_ref,
       required this.cll_caregroup,
       required this.cll_carehome,
-      required this.created_at,
-      required this.updated_at,
       required this.careHome_id});
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
     map['call_id'] = Variable<int>(callId);
-    map['site_id'] = Variable<int>(site_Id);
+    map['site_id'] = Variable<String>(site_Id);
     map['cll_Start_dat'] = Variable<DateTime>(cll_start_date);
     map['cll_end_dat'] = Variable<DateTime>(cll_end_date);
-    map['call_duration'] = Variable<int>(cll_duration);
+    map['call_duration'] = Variable<String>(cll_duration);
     map['cll_room'] = Variable<String>(cll_room);
     map['cll_type'] = Variable<String>(cll_type);
     map['cll_zone'] = Variable<String>(cll_zone);
-    map['cll_unit_ID'] = Variable<int>(cll_unit_ID);
+    map['cll_unit_ID'] = Variable<String>(cll_unit_ID);
     map['cll_db_ref_id '] = Variable<String>(cll_db_ref_id);
     map['cll_db_date_id'] = Variable<String>(cll_db_date_id);
     map['cll_db_time_id'] = Variable<String>(cll_db_time_id);
-    map['cll_call_group_ID'] = Variable<int>(cll_call_group_ID);
-    map['cll_worked_through '] = Variable<int>(cll_worked_through);
+    map['cll_call_group_ID'] = Variable<String>(cll_call_group_ID);
+    map['cll_worked_through '] = Variable<String>(cll_worked_through);
     map['cll_carer'] = Variable<String>(cll_carer);
     map['cll_call_tracking_ref'] = Variable<String>(cll_call_tracking_ref);
     map['cll_clear '] = Variable<String>(cll_clear);
@@ -529,9 +491,7 @@ class CallTableData extends DataClass implements Insertable<CallTableData> {
     map['cll_journey_ref '] = Variable<String>(cll_journey_ref);
     map['cll_caregroup '] = Variable<String>(cll_caregroup);
     map['cll_carehome'] = Variable<String>(cll_carehome);
-    map['created_at'] = Variable<DateTime>(created_at);
-    map['updated_at'] = Variable<DateTime>(updated_at);
-    map['careHome_id '] = Variable<int>(careHome_id);
+    map['careHome_id '] = Variable<String>(careHome_id);
     return map;
   }
 
@@ -559,8 +519,6 @@ class CallTableData extends DataClass implements Insertable<CallTableData> {
       cll_journey_ref: Value(cll_journey_ref),
       cll_caregroup: Value(cll_caregroup),
       cll_carehome: Value(cll_carehome),
-      created_at: Value(created_at),
-      updated_at: Value(updated_at),
       careHome_id: Value(careHome_id),
     );
   }
@@ -570,19 +528,20 @@ class CallTableData extends DataClass implements Insertable<CallTableData> {
     serializer ??= driftRuntimeOptions.defaultSerializer;
     return CallTableData(
       callId: serializer.fromJson<int>(json['callId']),
-      site_Id: serializer.fromJson<int>(json['site_Id']),
+      site_Id: serializer.fromJson<String>(json['site_Id']),
       cll_start_date: serializer.fromJson<DateTime>(json['cll_start_date']),
       cll_end_date: serializer.fromJson<DateTime>(json['cll_end_date']),
-      cll_duration: serializer.fromJson<int>(json['cll_duration']),
+      cll_duration: serializer.fromJson<String>(json['cll_duration']),
       cll_room: serializer.fromJson<String>(json['cll_room']),
       cll_type: serializer.fromJson<String>(json['cll_type']),
       cll_zone: serializer.fromJson<String>(json['cll_zone']),
-      cll_unit_ID: serializer.fromJson<int>(json['cll_unit_ID']),
+      cll_unit_ID: serializer.fromJson<String>(json['cll_unit_ID']),
       cll_db_ref_id: serializer.fromJson<String>(json['cll_db_ref_id']),
       cll_db_date_id: serializer.fromJson<String>(json['cll_db_date_id']),
       cll_db_time_id: serializer.fromJson<String>(json['cll_db_time_id']),
-      cll_call_group_ID: serializer.fromJson<int>(json['cll_call_group_ID']),
-      cll_worked_through: serializer.fromJson<int>(json['cll_worked_through']),
+      cll_call_group_ID: serializer.fromJson<String>(json['cll_call_group_ID']),
+      cll_worked_through:
+          serializer.fromJson<String>(json['cll_worked_through']),
       cll_carer: serializer.fromJson<String>(json['cll_carer']),
       cll_call_tracking_ref:
           serializer.fromJson<String>(json['cll_call_tracking_ref']),
@@ -592,9 +551,7 @@ class CallTableData extends DataClass implements Insertable<CallTableData> {
       cll_journey_ref: serializer.fromJson<String>(json['cll_journey_ref']),
       cll_caregroup: serializer.fromJson<String>(json['cll_caregroup']),
       cll_carehome: serializer.fromJson<String>(json['cll_carehome']),
-      created_at: serializer.fromJson<DateTime>(json['created_at']),
-      updated_at: serializer.fromJson<DateTime>(json['updated_at']),
-      careHome_id: serializer.fromJson<int>(json['careHome_id']),
+      careHome_id: serializer.fromJson<String>(json['careHome_id']),
     );
   }
   @override
@@ -602,19 +559,19 @@ class CallTableData extends DataClass implements Insertable<CallTableData> {
     serializer ??= driftRuntimeOptions.defaultSerializer;
     return <String, dynamic>{
       'callId': serializer.toJson<int>(callId),
-      'site_Id': serializer.toJson<int>(site_Id),
+      'site_Id': serializer.toJson<String>(site_Id),
       'cll_start_date': serializer.toJson<DateTime>(cll_start_date),
       'cll_end_date': serializer.toJson<DateTime>(cll_end_date),
-      'cll_duration': serializer.toJson<int>(cll_duration),
+      'cll_duration': serializer.toJson<String>(cll_duration),
       'cll_room': serializer.toJson<String>(cll_room),
       'cll_type': serializer.toJson<String>(cll_type),
       'cll_zone': serializer.toJson<String>(cll_zone),
-      'cll_unit_ID': serializer.toJson<int>(cll_unit_ID),
+      'cll_unit_ID': serializer.toJson<String>(cll_unit_ID),
       'cll_db_ref_id': serializer.toJson<String>(cll_db_ref_id),
       'cll_db_date_id': serializer.toJson<String>(cll_db_date_id),
       'cll_db_time_id': serializer.toJson<String>(cll_db_time_id),
-      'cll_call_group_ID': serializer.toJson<int>(cll_call_group_ID),
-      'cll_worked_through': serializer.toJson<int>(cll_worked_through),
+      'cll_call_group_ID': serializer.toJson<String>(cll_call_group_ID),
+      'cll_worked_through': serializer.toJson<String>(cll_worked_through),
       'cll_carer': serializer.toJson<String>(cll_carer),
       'cll_call_tracking_ref': serializer.toJson<String>(cll_call_tracking_ref),
       'cll_clear': serializer.toJson<String>(cll_clear),
@@ -623,27 +580,25 @@ class CallTableData extends DataClass implements Insertable<CallTableData> {
       'cll_journey_ref': serializer.toJson<String>(cll_journey_ref),
       'cll_caregroup': serializer.toJson<String>(cll_caregroup),
       'cll_carehome': serializer.toJson<String>(cll_carehome),
-      'created_at': serializer.toJson<DateTime>(created_at),
-      'updated_at': serializer.toJson<DateTime>(updated_at),
-      'careHome_id': serializer.toJson<int>(careHome_id),
+      'careHome_id': serializer.toJson<String>(careHome_id),
     };
   }
 
   CallTableData copyWith(
           {int? callId,
-          int? site_Id,
+          String? site_Id,
           DateTime? cll_start_date,
           DateTime? cll_end_date,
-          int? cll_duration,
+          String? cll_duration,
           String? cll_room,
           String? cll_type,
           String? cll_zone,
-          int? cll_unit_ID,
+          String? cll_unit_ID,
           String? cll_db_ref_id,
           String? cll_db_date_id,
           String? cll_db_time_id,
-          int? cll_call_group_ID,
-          int? cll_worked_through,
+          String? cll_call_group_ID,
+          String? cll_worked_through,
           String? cll_carer,
           String? cll_call_tracking_ref,
           String? cll_clear,
@@ -652,9 +607,7 @@ class CallTableData extends DataClass implements Insertable<CallTableData> {
           String? cll_journey_ref,
           String? cll_caregroup,
           String? cll_carehome,
-          DateTime? created_at,
-          DateTime? updated_at,
-          int? careHome_id}) =>
+          String? careHome_id}) =>
       CallTableData(
         callId: callId ?? this.callId,
         site_Id: site_Id ?? this.site_Id,
@@ -679,8 +632,6 @@ class CallTableData extends DataClass implements Insertable<CallTableData> {
         cll_journey_ref: cll_journey_ref ?? this.cll_journey_ref,
         cll_caregroup: cll_caregroup ?? this.cll_caregroup,
         cll_carehome: cll_carehome ?? this.cll_carehome,
-        created_at: created_at ?? this.created_at,
-        updated_at: updated_at ?? this.updated_at,
         careHome_id: careHome_id ?? this.careHome_id,
       );
   @override
@@ -708,8 +659,6 @@ class CallTableData extends DataClass implements Insertable<CallTableData> {
           ..write('cll_journey_ref: $cll_journey_ref, ')
           ..write('cll_caregroup: $cll_caregroup, ')
           ..write('cll_carehome: $cll_carehome, ')
-          ..write('created_at: $created_at, ')
-          ..write('updated_at: $updated_at, ')
           ..write('careHome_id: $careHome_id')
           ..write(')'))
         .toString();
@@ -739,8 +688,6 @@ class CallTableData extends DataClass implements Insertable<CallTableData> {
         cll_journey_ref,
         cll_caregroup,
         cll_carehome,
-        created_at,
-        updated_at,
         careHome_id
       ]);
   @override
@@ -769,26 +716,24 @@ class CallTableData extends DataClass implements Insertable<CallTableData> {
           other.cll_journey_ref == this.cll_journey_ref &&
           other.cll_caregroup == this.cll_caregroup &&
           other.cll_carehome == this.cll_carehome &&
-          other.created_at == this.created_at &&
-          other.updated_at == this.updated_at &&
           other.careHome_id == this.careHome_id);
 }
 
 class CallTableCompanion extends UpdateCompanion<CallTableData> {
   final Value<int> callId;
-  final Value<int> site_Id;
+  final Value<String> site_Id;
   final Value<DateTime> cll_start_date;
   final Value<DateTime> cll_end_date;
-  final Value<int> cll_duration;
+  final Value<String> cll_duration;
   final Value<String> cll_room;
   final Value<String> cll_type;
   final Value<String> cll_zone;
-  final Value<int> cll_unit_ID;
+  final Value<String> cll_unit_ID;
   final Value<String> cll_db_ref_id;
   final Value<String> cll_db_date_id;
   final Value<String> cll_db_time_id;
-  final Value<int> cll_call_group_ID;
-  final Value<int> cll_worked_through;
+  final Value<String> cll_call_group_ID;
+  final Value<String> cll_worked_through;
   final Value<String> cll_carer;
   final Value<String> cll_call_tracking_ref;
   final Value<String> cll_clear;
@@ -797,9 +742,7 @@ class CallTableCompanion extends UpdateCompanion<CallTableData> {
   final Value<String> cll_journey_ref;
   final Value<String> cll_caregroup;
   final Value<String> cll_carehome;
-  final Value<DateTime> created_at;
-  final Value<DateTime> updated_at;
-  final Value<int> careHome_id;
+  final Value<String> careHome_id;
   const CallTableCompanion({
     this.callId = const Value.absent(),
     this.site_Id = const Value.absent(),
@@ -823,25 +766,23 @@ class CallTableCompanion extends UpdateCompanion<CallTableData> {
     this.cll_journey_ref = const Value.absent(),
     this.cll_caregroup = const Value.absent(),
     this.cll_carehome = const Value.absent(),
-    this.created_at = const Value.absent(),
-    this.updated_at = const Value.absent(),
     this.careHome_id = const Value.absent(),
   });
   CallTableCompanion.insert({
     this.callId = const Value.absent(),
-    required int site_Id,
+    required String site_Id,
     required DateTime cll_start_date,
     required DateTime cll_end_date,
-    required int cll_duration,
+    required String cll_duration,
     required String cll_room,
     required String cll_type,
     required String cll_zone,
-    required int cll_unit_ID,
+    required String cll_unit_ID,
     required String cll_db_ref_id,
     required String cll_db_date_id,
     required String cll_db_time_id,
-    required int cll_call_group_ID,
-    required int cll_worked_through,
+    required String cll_call_group_ID,
+    required String cll_worked_through,
     required String cll_carer,
     required String cll_call_tracking_ref,
     required String cll_clear,
@@ -850,9 +791,7 @@ class CallTableCompanion extends UpdateCompanion<CallTableData> {
     required String cll_journey_ref,
     required String cll_caregroup,
     required String cll_carehome,
-    required DateTime created_at,
-    required DateTime updated_at,
-    required int careHome_id,
+    required String careHome_id,
   })  : site_Id = Value(site_Id),
         cll_start_date = Value(cll_start_date),
         cll_end_date = Value(cll_end_date),
@@ -874,24 +813,22 @@ class CallTableCompanion extends UpdateCompanion<CallTableData> {
         cll_journey_ref = Value(cll_journey_ref),
         cll_caregroup = Value(cll_caregroup),
         cll_carehome = Value(cll_carehome),
-        created_at = Value(created_at),
-        updated_at = Value(updated_at),
         careHome_id = Value(careHome_id);
   static Insertable<CallTableData> custom({
     Expression<int>? callId,
-    Expression<int>? site_Id,
+    Expression<String>? site_Id,
     Expression<DateTime>? cll_start_date,
     Expression<DateTime>? cll_end_date,
-    Expression<int>? cll_duration,
+    Expression<String>? cll_duration,
     Expression<String>? cll_room,
     Expression<String>? cll_type,
     Expression<String>? cll_zone,
-    Expression<int>? cll_unit_ID,
+    Expression<String>? cll_unit_ID,
     Expression<String>? cll_db_ref_id,
     Expression<String>? cll_db_date_id,
     Expression<String>? cll_db_time_id,
-    Expression<int>? cll_call_group_ID,
-    Expression<int>? cll_worked_through,
+    Expression<String>? cll_call_group_ID,
+    Expression<String>? cll_worked_through,
     Expression<String>? cll_carer,
     Expression<String>? cll_call_tracking_ref,
     Expression<String>? cll_clear,
@@ -900,9 +837,7 @@ class CallTableCompanion extends UpdateCompanion<CallTableData> {
     Expression<String>? cll_journey_ref,
     Expression<String>? cll_caregroup,
     Expression<String>? cll_carehome,
-    Expression<DateTime>? created_at,
-    Expression<DateTime>? updated_at,
-    Expression<int>? careHome_id,
+    Expression<String>? careHome_id,
   }) {
     return RawValuesInsertable({
       if (callId != null) 'call_id': callId,
@@ -928,27 +863,25 @@ class CallTableCompanion extends UpdateCompanion<CallTableData> {
       if (cll_journey_ref != null) 'cll_journey_ref ': cll_journey_ref,
       if (cll_caregroup != null) 'cll_caregroup ': cll_caregroup,
       if (cll_carehome != null) 'cll_carehome': cll_carehome,
-      if (created_at != null) 'created_at': created_at,
-      if (updated_at != null) 'updated_at': updated_at,
       if (careHome_id != null) 'careHome_id ': careHome_id,
     });
   }
 
   CallTableCompanion copyWith(
       {Value<int>? callId,
-      Value<int>? site_Id,
+      Value<String>? site_Id,
       Value<DateTime>? cll_start_date,
       Value<DateTime>? cll_end_date,
-      Value<int>? cll_duration,
+      Value<String>? cll_duration,
       Value<String>? cll_room,
       Value<String>? cll_type,
       Value<String>? cll_zone,
-      Value<int>? cll_unit_ID,
+      Value<String>? cll_unit_ID,
       Value<String>? cll_db_ref_id,
       Value<String>? cll_db_date_id,
       Value<String>? cll_db_time_id,
-      Value<int>? cll_call_group_ID,
-      Value<int>? cll_worked_through,
+      Value<String>? cll_call_group_ID,
+      Value<String>? cll_worked_through,
       Value<String>? cll_carer,
       Value<String>? cll_call_tracking_ref,
       Value<String>? cll_clear,
@@ -957,9 +890,7 @@ class CallTableCompanion extends UpdateCompanion<CallTableData> {
       Value<String>? cll_journey_ref,
       Value<String>? cll_caregroup,
       Value<String>? cll_carehome,
-      Value<DateTime>? created_at,
-      Value<DateTime>? updated_at,
-      Value<int>? careHome_id}) {
+      Value<String>? careHome_id}) {
     return CallTableCompanion(
       callId: callId ?? this.callId,
       site_Id: site_Id ?? this.site_Id,
@@ -984,8 +915,6 @@ class CallTableCompanion extends UpdateCompanion<CallTableData> {
       cll_journey_ref: cll_journey_ref ?? this.cll_journey_ref,
       cll_caregroup: cll_caregroup ?? this.cll_caregroup,
       cll_carehome: cll_carehome ?? this.cll_carehome,
-      created_at: created_at ?? this.created_at,
-      updated_at: updated_at ?? this.updated_at,
       careHome_id: careHome_id ?? this.careHome_id,
     );
   }
@@ -997,7 +926,7 @@ class CallTableCompanion extends UpdateCompanion<CallTableData> {
       map['call_id'] = Variable<int>(callId.value);
     }
     if (site_Id.present) {
-      map['site_id'] = Variable<int>(site_Id.value);
+      map['site_id'] = Variable<String>(site_Id.value);
     }
     if (cll_start_date.present) {
       map['cll_Start_dat'] = Variable<DateTime>(cll_start_date.value);
@@ -1006,7 +935,7 @@ class CallTableCompanion extends UpdateCompanion<CallTableData> {
       map['cll_end_dat'] = Variable<DateTime>(cll_end_date.value);
     }
     if (cll_duration.present) {
-      map['call_duration'] = Variable<int>(cll_duration.value);
+      map['call_duration'] = Variable<String>(cll_duration.value);
     }
     if (cll_room.present) {
       map['cll_room'] = Variable<String>(cll_room.value);
@@ -1018,7 +947,7 @@ class CallTableCompanion extends UpdateCompanion<CallTableData> {
       map['cll_zone'] = Variable<String>(cll_zone.value);
     }
     if (cll_unit_ID.present) {
-      map['cll_unit_ID'] = Variable<int>(cll_unit_ID.value);
+      map['cll_unit_ID'] = Variable<String>(cll_unit_ID.value);
     }
     if (cll_db_ref_id.present) {
       map['cll_db_ref_id '] = Variable<String>(cll_db_ref_id.value);
@@ -1030,10 +959,10 @@ class CallTableCompanion extends UpdateCompanion<CallTableData> {
       map['cll_db_time_id'] = Variable<String>(cll_db_time_id.value);
     }
     if (cll_call_group_ID.present) {
-      map['cll_call_group_ID'] = Variable<int>(cll_call_group_ID.value);
+      map['cll_call_group_ID'] = Variable<String>(cll_call_group_ID.value);
     }
     if (cll_worked_through.present) {
-      map['cll_worked_through '] = Variable<int>(cll_worked_through.value);
+      map['cll_worked_through '] = Variable<String>(cll_worked_through.value);
     }
     if (cll_carer.present) {
       map['cll_carer'] = Variable<String>(cll_carer.value);
@@ -1060,14 +989,8 @@ class CallTableCompanion extends UpdateCompanion<CallTableData> {
     if (cll_carehome.present) {
       map['cll_carehome'] = Variable<String>(cll_carehome.value);
     }
-    if (created_at.present) {
-      map['created_at'] = Variable<DateTime>(created_at.value);
-    }
-    if (updated_at.present) {
-      map['updated_at'] = Variable<DateTime>(updated_at.value);
-    }
     if (careHome_id.present) {
-      map['careHome_id '] = Variable<int>(careHome_id.value);
+      map['careHome_id '] = Variable<String>(careHome_id.value);
     }
     return map;
   }
@@ -1097,8 +1020,6 @@ class CallTableCompanion extends UpdateCompanion<CallTableData> {
           ..write('cll_journey_ref: $cll_journey_ref, ')
           ..write('cll_caregroup: $cll_caregroup, ')
           ..write('cll_carehome: $cll_carehome, ')
-          ..write('created_at: $created_at, ')
-          ..write('updated_at: $updated_at, ')
           ..write('careHome_id: $careHome_id')
           ..write(')'))
         .toString();
