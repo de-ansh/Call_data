@@ -1,5 +1,6 @@
 import 'package:arquella_hub/data/database/call_database.dart';
 import 'package:arquella_hub/view/add_call.dart';
+import 'package:arquella_hub/view/edit_call.dart';
 import 'package:flutter/material.dart';
 import 'package:arquella_hub/server/websocket_server.dart';
 import 'package:arquella_hub/data/database/database_screen.dart';
@@ -22,6 +23,8 @@ class MyApp extends StatelessWidget {
       home: const HomePage(),
       routes: {
         '/database': (context) => const DatabaseScreen(),
+        '/editCall' :(context) => const EditCallPage(),
+        
       },
     );
   }

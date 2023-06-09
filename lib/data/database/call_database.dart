@@ -27,7 +27,6 @@ class _CallDataBaseState extends State<CallDataBase> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Colors.blueGrey,
         appBar: AppBar(
           title: const Text(
             "Call DataBase",
@@ -56,110 +55,115 @@ class _CallDataBaseState extends State<CallDataBase> {
                   itemCount: calls.length,
                   itemBuilder: (context, index) {
                     final call = calls[index];
-                    return Card(
-                      color: Colors.grey.shade50,
-                      shape: const RoundedRectangleBorder(
-                          side: BorderSide(
-                            color: Colors.green,
-                            width: 1.2,
-                            style: BorderStyle.solid,
+                    return GestureDetector(
+                      onTap: () {
+                        Navigator.pushNamed(context, '/editCall');
+                      },
+                      child: Card(
+                        color: Colors.grey.shade50,
+                        shape: const RoundedRectangleBorder(
+                            side: BorderSide(
+                              color: Colors.green,
+                              width: 1.2,
+                              style: BorderStyle.solid,
+                            ),
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(10.0),
+                            )),
+                        child: Padding(
+                          padding: const EdgeInsets.all(10.0),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Row(
+                                children: [
+                                  const Text(
+                                    "Call Id : ",
+                                    style: TextStyle(fontSize: 18),
+                                  ),
+                                  Text(
+                                    call.callId.toString(),
+                                    style: const TextStyle(fontSize: 18),
+                                  ),
+                                ],
+                              ),
+                              const SizedBox(
+                                height: 8,
+                              ),
+                              Row(
+                                children: [
+                                  const Text(
+                                    "Call Start Date: ",
+                                    style: TextStyle(fontSize: 18),
+                                  ),
+                                  Text(
+                                    call.cll_start_date.toString(),
+                                    style: const TextStyle(fontSize: 18),
+                                  ),
+                                ],
+                              ),
+                              const SizedBox(
+                                height: 8,
+                              ),
+                              Row(
+                                children: [
+                                  const Text(
+                                    "Call End Date",
+                                    style: TextStyle(fontSize: 18),
+                                  ),
+                                  Text(
+                                    call.cll_end_date.toString(),
+                                    style: const TextStyle(fontSize: 18),
+                                  ),
+                                ],
+                              ),
+                              const SizedBox(
+                                height: 8,
+                              ),
+                              Row(
+                                children: [
+                                  const Text(
+                                    "Care Home Id",
+                                    style: TextStyle(fontSize: 18),
+                                  ),
+                                  Text(
+                                    call.careHome_id,
+                                    style: const TextStyle(fontSize: 18),
+                                  ),
+                                ],
+                              ),
+                              const SizedBox(
+                                height: 8,
+                              ),
+                              Row(
+                                children: [
+                                  const Text(
+                                    "Call Carer: ",
+                                    style: TextStyle(fontSize: 18),
+                                  ),
+                                  Text(
+                                    call.cll_carer.toString(),
+                                    style: const TextStyle(fontSize: 18),
+                                  ),
+                                ],
+                              ),
+                              const SizedBox(
+                                height: 8,
+                              ),
+                              Row(
+                                children: [
+                                  const Text(
+                                    "Call Duration: ",
+                                    style: TextStyle(fontSize: 18),
+                                  ),
+                                  Text(
+                                    call.cll_duration.toString(),
+                                    style: const TextStyle(fontSize: 18),
+                                  ),
+                                ],
+                              ),
+                            ],
                           ),
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(10.0),
-                          )),
-                      child: Padding(
-                        padding: const EdgeInsets.all(10.0),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Row(
-                              children: [
-                                const Text(
-                                  "Call Id : ",
-                                  style: TextStyle(fontSize: 18),
-                                ),
-                                Text(
-                                  call.callId.toString(),
-                                  style: const TextStyle(fontSize: 18),
-                                ),
-                              ],
-                            ),
-                            const SizedBox(
-                              height: 8,
-                            ),
-                            Row(
-                              children: [
-                                const Text(
-                                  "Call Start Date: ",
-                                  style: TextStyle(fontSize: 18),
-                                ),
-                                Text(
-                                  call.cll_start_date.toString(),
-                                  style: const TextStyle(fontSize: 18),
-                                ),
-                              ],
-                            ),
-                            const SizedBox(
-                              height: 8,
-                            ),
-                            Row(
-                              children: [
-                                const Text(
-                                  "Call End Date",
-                                  style: TextStyle(fontSize: 18),
-                                ),
-                                Text(
-                                  call.cll_end_date.toString(),
-                                  style: const TextStyle(fontSize: 18),
-                                ),
-                              ],
-                            ),
-                            const SizedBox(
-                              height: 8,
-                            ),
-                            Row(
-                              children: [
-                                const Text(
-                                  "Care Home Id",
-                                  style: TextStyle(fontSize: 18),
-                                ),
-                                Text(
-                                  call.careHome_id,
-                                  style: const TextStyle(fontSize: 18),
-                                ),
-                              ],
-                            ),
-                            const SizedBox(
-                              height: 8,
-                            ),
-                            Row(
-                              children: [
-                                const Text(
-                                  "Call Carer: ",
-                                  style: TextStyle(fontSize: 18),
-                                ),
-                                Text(
-                                  call.cll_carer.toString(),
-                                  style: const TextStyle(fontSize: 18),
-                                ),
-                              ],
-                            ),
-                            const SizedBox(
-                              height: 8,
-                            ),
-                            Row(
-                              children: [
-                                const Text(
-                                  "Call Duration: ",
-                                  style: TextStyle(fontSize: 18),
-                                ),
-                                Text(
-                                  call.cll_duration.toString(),
-                                  style: const TextStyle(fontSize: 18),
-                                ),
-                              ],
-                            ),
-                          ],
                         ),
                       ),
                     );
