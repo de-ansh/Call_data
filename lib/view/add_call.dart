@@ -49,8 +49,7 @@ class _AddCallPageState extends State<AddCallPage> {
       TextEditingController();
   final TextEditingController cll_carehome_controller = TextEditingController();
   final TextEditingController careHome_id_Controller = TextEditingController();
-  final TextEditingController created_at_controller = TextEditingController();
-  final TextEditingController updated_at_controller = TextEditingController();
+
   DateTime? _callstrtDate;
   DateTime? _callendDate;
 
@@ -62,57 +61,38 @@ class _AddCallPageState extends State<AddCallPage> {
   }
 
   @override
+  void dispose() {
+    _db.close();
+    _siteIdController.dispose();
+    _callDurationController.dispose();
+    _callStartDateController.dispose();
+    _callendDateController.dispose();
+    cll_zoneController.dispose();
+    _cll_roomController.dispose();
+    cll_typeController.dispose();
+    cll_db_date_id_Controller.dispose();
+    cll_db_ref_id_controller.dispose();
+    cll_db_time_id_Controller.dispose();
+    cll_call_group_ID_controller.dispose();
+    _cll_unit_ID_Controller.dispose();
+    cll_fb_record_id_Controller.dispose();
+    careHome_id_Controller.dispose();
+    cll_panel_name_Controller.dispose();
+    cll_worked_through_Controller.dispose();
+    cll_carer_Controller.dispose();
+    cll_call_tracking_ref_controller.dispose();
+    cll_clear_controller.dispose();
+    cll_caregroup_controller.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Add Care Call"),
         centerTitle: true,
-        actions: [
-          IconButton(
-              onPressed: () {
-                final entity = CallTableCompanion(
-                  site_Id: drift.Value(_siteIdController.text),
-                  cll_start_date: drift.Value(DateTime.now()),
-                  cll_end_date: drift.Value(DateTime.now()),
-                  cll_duration: drift.Value(_callDurationController.text),
-                  cll_room: drift.Value(_cll_roomController.text),
-                  cll_type: drift.Value(cll_typeController.text),
-                  cll_zone: drift.Value(cll_zoneController.text),
-                  cll_unit_ID: drift.Value(_cll_unit_ID_Controller.text),
-                  cll_db_ref_id: drift.Value(cll_db_ref_id_controller.text),
-                  cll_db_date_id: drift.Value(cll_db_date_id_Controller.text),
-                  cll_db_time_id: drift.Value(cll_db_time_id_Controller.text),
-                  cll_call_group_ID:
-                      drift.Value(cll_call_group_ID_controller.text),
-                  cll_worked_through:
-                      drift.Value(cll_worked_through_Controller.text),
-                  cll_carer: drift.Value(cll_carer_Controller.text),
-                  cll_call_tracking_ref:
-                      drift.Value(cll_call_tracking_ref_controller.text),
-                  cll_clear: drift.Value(cll_clear_controller.text),
-                  cll_fb_record_id:
-                      drift.Value(cll_fb_record_id_Controller.text),
-                  cll_journey_ref: drift.Value(cll_journey_ref_controller.text),
-                  cll_panel_name: drift.Value(cll_panel_name_Controller.text),
-                  careHome_id: drift.Value(careHome_id_Controller.text),
-                  cll_caregroup: drift.Value(cll_caregroup_controller.text),
-                  cll_carehome: drift.Value(cll_carehome_controller.text),
-                );
-                _db.insertCall(entity).then(
-                    (value) => ScaffoldMessenger.of(context).showMaterialBanner(
-                          MaterialBanner(
-                            content: Text("New Call Created"),
-                            actions: [
-                              TextButton(
-                                  onPressed: () => ScaffoldMessenger.of(context)
-                                      .hideCurrentMaterialBanner(),
-                                  child: Text("Close"))
-                            ],
-                          ),
-                        ));
-              },
-              icon: Icon(Icons.save))
-        ],
+        actions: [IconButton(onPressed: addCall, icon: const Icon(Icons.save))],
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(8),
@@ -297,5 +277,56 @@ class _AddCallPageState extends State<AddCallPage> {
       String cllsrtdate = DateFormat('dd/MM/yyyy').format(newDate);
       _callendDateController.text = cllsrtdate;
     });
+  }
+
+  void addCall() {
+    final entity = CallTableCompanion(
+      site_Id: drift.Value(_siteIdController.text),
+      cll_start_date: drift.Value(DateTime.now()),
+      cll_end_date: drift.Value(DateTime.now()),
+      cll_duration: drift.Value(_callDurationController.text),
+      cll_room: drift.Value(_cll_roomController.text),
+      cll_type: drift.Value(cll_typeController.text),
+      cll_zone: drift.Value(cll_zoneController.text),
+      cll_unit_ID: drift.Value(_cll_unit_ID_Controller.text),
+      cll_db_ref_id: drift.Value(cll_db_ref_id_controller.text),
+      cll_db_date_id: drift.Value(cll_db_date_id_Controller.text),
+      cll_db_time_id: drift.Value(cll_db_time_id_Controller.text),
+      cll_call_group_ID: drift.Value(cll_call_group_ID_controller.text),
+      cll_worked_through: drift.Value(cll_worked_through_Controller.text),
+      cll_carer: drift.Value(cll_carer_Controller.text),
+      cll_call_tracking_ref: drift.Value(cll_call_tracking_ref_controller.text),
+      cll_clear: drift.Value(cll_clear_controller.text),
+      cll_fb_record_id: drift.Value(cll_fb_record_id_Controller.text),
+      cll_journey_ref: drift.Value(cll_journey_ref_controller.text),
+      cll_panel_name: drift.Value(cll_panel_name_Controller.text),
+      careHome_id: drift.Value(careHome_id_Controller.text),
+      cll_caregroup: drift.Value(cll_caregroup_controller.text),
+      cll_carehome: drift.Value(cll_carehome_controller.text),
+    );
+    _db
+        .insertCall(entity)
+        .then((value) => ScaffoldMessenger.of(context).showMaterialBanner(
+              MaterialBanner(
+                content: Text(
+                  "New Call Created: $value",
+                  style: const TextStyle(
+                    color: Colors.white,
+                  ),
+                ),
+                actions: [
+                  TextButton(
+                    onPressed: () => ScaffoldMessenger.of(context)
+                        .hideCurrentMaterialBanner(),
+                    child: const Text(
+                      "Close",
+                      style: const TextStyle(
+                        color: Colors.white,
+                      ),
+                    ),
+                  )
+                ],
+              ),
+            ));
   }
 }
