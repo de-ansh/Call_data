@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:arquella_hub/data/database/database_helper.dart';
 
 class DatabaseScreen extends StatefulWidget {
+  const DatabaseScreen({super.key});
+
   @override
   _DatabaseScreenState createState() => _DatabaseScreenState();
 }
 
 class _DatabaseScreenState extends State<DatabaseScreen> {
-  DatabaseHelper _databaseHelper = DatabaseHelper();
+  final DatabaseHelper _databaseHelper = DatabaseHelper();
   List<Map<String, dynamic>> _messages = [];
 
   @override
@@ -27,7 +29,7 @@ class _DatabaseScreenState extends State<DatabaseScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Database'),
+        title: const Text('Database'),
       ),
       body: ListView.builder(
         itemCount: _messages.length,

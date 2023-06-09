@@ -65,7 +65,7 @@ void usbListener(){
       debugPrint("Usb detached");
       _usbPort!.close();
       saveError("Usb detached - ${dt.toIso8601String()}");
-      notificationList.add(MaterialBanner(content: Text("Usb Detached - ${dt.day.toString().padLeft(2, '0')}/${dt.month.toString().padLeft(2, '0')}/${dt.year} ${dt.hour.toString().padLeft(2, '0')}:${dt.minute.toString().padLeft(2, '0')}"), actions: [],));
+      notificationList.add(MaterialBanner(content: Text("Usb Detached - ${dt.day.toString().padLeft(2, '0')}/${dt.month.toString().padLeft(2, '0')}/${dt.year} ${dt.hour.toString().padLeft(2, '0')}:${dt.minute.toString().padLeft(2, '0')}"), actions: const [],));
       notifications.sink.add("Usb Detached");
     }
   });

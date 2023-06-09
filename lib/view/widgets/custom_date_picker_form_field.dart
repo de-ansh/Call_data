@@ -26,6 +26,7 @@ class CustomDatePicker extends StatelessWidget {
         if (value == null || value.isEmpty) {
           return '$_txtLabel cannot be empty';
         }
+        return null;
       },
       onTap: _callback,
     );

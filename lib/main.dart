@@ -6,7 +6,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:http/http.dart' as http;
-import 'interface/call_page.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();

@@ -21,9 +21,9 @@ class Message {
 }
 
 class WebSocketServer {
-  List<ClientInfo> _clientsInfo = [];
-  List<Message> _messages = [];
-  DatabaseHelper _databaseHelper = DatabaseHelper();
+  final List<ClientInfo> _clientsInfo = [];
+  final List<Message> _messages = [];
+  final DatabaseHelper _databaseHelper = DatabaseHelper();
   HttpServer? _httpServer;
   WebSocketChannel? _channel;
 

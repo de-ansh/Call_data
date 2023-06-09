@@ -320,7 +320,7 @@ class _AddCallPageState extends State<AddCallPage> {
                         .hideCurrentMaterialBanner(),
                     child: const Text(
                       "Close",
-                      style: const TextStyle(
+                      style: TextStyle(
                         color: Colors.white,
                       ),
                     ),

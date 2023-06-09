@@ -127,7 +127,7 @@ class _FirstAlertState extends State<FirstAlert> {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Text(alertText),
-                Spacer(),
+                const Spacer(),
                 Icon(widget.alert.batteryLow ? Icons.battery_alert_outlined : Icons.battery_std, color: textColor,)
               ],
             ),

@@ -5,13 +5,11 @@ import 'package:arquella_hub/calls/default_view.dart';
 import 'package:arquella_hub/data/calls/engine/call_engine.dart';
 import 'package:arquella_hub/data/time/time_data.dart';
 import 'package:arquella_hub/data/usb/interface.dart';
-import 'package:arquella_hub/server/local/server.dart';
 // import 'package:arquella_hub/server/remote/remote_connection.dart';
 import 'package:arquella_hub/sound_player/player.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 // import 'package:qr/qr.dart';
-import 'package:qr_flutter/qr_flutter.dart';
 
 import '../data/calls/data.dart';
 import '../data/system/config/data.dart';

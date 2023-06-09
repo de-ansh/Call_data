@@ -19,21 +19,23 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: HomePage(),
+      home: const HomePage(),
       routes: {
-        '/database': (context) => DatabaseScreen(),
+        '/database': (context) => const DatabaseScreen(),
       },
     );
   }
 }
 
 class HomePage extends StatefulWidget {
+  const HomePage({super.key});
+
   @override
   _HomePageState createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
-  WebSocketServer _webSocketServer = WebSocketServer();
+  final WebSocketServer _webSocketServer = WebSocketServer();
   bool _isServerRunning = false;
 
   @override
@@ -58,7 +60,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('WebSocket Server'),
+          title: const Text('WebSocket Server'),
         ),
         body: Center(
           child: Column(
@@ -66,21 +68,21 @@ class _HomePageState extends State<HomePage> {
             children: [
               Text(
                 _isServerRunning ? 'Server Running' : 'Server Stopped',
-                style: TextStyle(fontSize: 20),
+                style: const TextStyle(fontSize: 20),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: _toggleServerStatus,
                 child: Text(_isServerRunning ? 'Stop Server' : 'Start Server'),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () {
                   Navigator.pushNamed(context, '/database');
                 },
-                child: Text('View Database'),
+                child: const Text('View Database'),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               ElevatedButton(
@@ -90,7 +92,7 @@ class _HomePageState extends State<HomePage> {
                       MaterialPageRoute(
                           builder: (context) => const CallDataBase()));
                 },
-                child: Text('View Call Database'),
+                child: const Text('View Call Database'),
               ),
             ],
           ),
