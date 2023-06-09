@@ -116,7 +116,7 @@ class _CallDataBaseState extends State<CallDataBase> {
                               Row(
                                 children: [
                                   const Text(
-                                    "Call End Date",
+                                    "Call End Date: ",
                                     style: TextStyle(fontSize: 18),
                                   ),
                                   Text(
@@ -131,7 +131,7 @@ class _CallDataBaseState extends State<CallDataBase> {
                               Row(
                                 children: [
                                   const Text(
-                                    "Care Home Id",
+                                    "Care Home Id: ",
                                     style: TextStyle(fontSize: 18),
                                   ),
                                   Text(

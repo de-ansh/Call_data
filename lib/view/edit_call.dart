@@ -341,6 +341,5 @@ class _EditCallPageState extends State<EditCallPage> {
     _callendDateController.text = _callTableData.cll_end_date.toIso8601String();
     cll_carer_Controller.text = _callTableData.cll_carer;
     cll_call_group_ID_controller.text = _callTableData.cll_call_group_ID;
-    
   }
 }
