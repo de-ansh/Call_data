@@ -1,4 +1,5 @@
 import 'package:arquella_hub/model/db/appdb.dart';
+import 'package:arquella_hub/view/edit_call.dart';
 import 'package:flutter/material.dart';
 
 class CallDataBase extends StatefulWidget {
@@ -57,7 +58,14 @@ class _CallDataBaseState extends State<CallDataBase> {
                     final call = calls[index];
                     return GestureDetector(
                       onTap: () {
-                        Navigator.pushNamed(context, '/editCall');
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => EditCallPage(
+                              id: call.callId,
+                            ),
+                          ),
+                        );
                       },
                       child: Card(
                         color: Colors.grey.shade50,

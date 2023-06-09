@@ -14,16 +14,18 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    
     return MaterialApp(
+      
       debugShowCheckedModeBanner: false,
       title: 'WebSocket Server',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
       home: const HomePage(),
+      
       routes: {
         '/database': (context) => const DatabaseScreen(),
-        '/editCall' :(context) => const EditCallPage(),
         
       },
     );

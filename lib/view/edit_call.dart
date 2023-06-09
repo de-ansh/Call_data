@@ -1,3 +1,4 @@
+import 'package:arquella_hub/data/calls/data.dart';
 import 'package:arquella_hub/model/db/appdb.dart';
 import 'package:arquella_hub/view/widgets/custem_text_form_field.dart';
 import 'package:arquella_hub/view/widgets/custom_date_picker_form_field.dart';
@@ -6,7 +7,8 @@ import 'package:intl/intl.dart';
 import 'package:drift/drift.dart' as drift;
 
 class EditCallPage extends StatefulWidget {
-  const EditCallPage({super.key});
+  final int id;
+  const EditCallPage({super.key, required this.id});
 
   @override
   State<EditCallPage> createState() => _EditCallPageState();
@@ -14,7 +16,7 @@ class EditCallPage extends StatefulWidget {
 
 class _EditCallPageState extends State<EditCallPage> {
   late AppDb _db;
-
+  late CallTableData _callTableData;
   final TextEditingController _siteIdController = TextEditingController();
   final TextEditingController _callDurationController = TextEditingController();
   final TextEditingController _cll_roomController = TextEditingController();
@@ -56,8 +58,9 @@ class _EditCallPageState extends State<EditCallPage> {
   @override
   void initState() {
     super.initState();
-
     _db = AppDb();
+    //final call = _db.getCall(widget.id);
+    getCall();
   }
 
   @override
@@ -328,5 +331,16 @@ class _EditCallPageState extends State<EditCallPage> {
                 ],
               ),
             ));
+  }
+
+  Future<void> getCall() async {
+    _callTableData = (await _db.getCall(widget.id));
+    _callDurationController.text = _callTableData.cll_duration;
+    _callStartDateController.text =
+        _callTableData.cll_start_date.toIso8601String();
+    _callendDateController.text = _callTableData.cll_end_date.toIso8601String();
+    cll_carer_Controller.text = _callTableData.cll_carer;
+    cll_call_group_ID_controller.text = _callTableData.cll_call_group_ID;
+    
   }
 }
