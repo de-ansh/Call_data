@@ -233,10 +233,11 @@ class _EditCallPageState extends State<EditCallPage> {
   }
 
   Future<void> pickcallStartDate(BuildContext context) async {
-    final initialDate = DateTime.now();
+    
+    
     final newDate = await showDatePicker(
         context: context,
-        initialDate: _callstrtDate ?? initialDate,
+        initialDate:  DateTime.now(),
         firstDate: DateTime(DateTime.now().year - 100),
         lastDate: DateTime(DateTime.now().year + 1),
         builder: (context, child) => Theme(
